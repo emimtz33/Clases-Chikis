@@ -1,69 +1,45 @@
-days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-monday = 0
-tuesday = 0
-wednesday = 0
-thursday = 0
-friday = 0
-saturday = 0
-sunday = 0
+from enum import Enum
 
-sumDay = 0
+class Items(Enum):
+    Apple = 27
+    Milk = 20
+    Eggs = 46
+    Cheese = 119
+    Bread = 200
+    Water = 10
 
-valid = True
+cart = []
+itemSelected = ""
+totalValue = 0
 
-print("Hello, we are going to get the avarage of your total screen time and hours for each category!\n (Please answer in minutes)")
+print("Welcome to the shop! \n Here are the list of items with the price of each")
 
+for item in Items:
+    print(item.name , item.value)
 
-for day in days:
-    print(day)
-    if day == "monday":
-        monday = float(input("What is your total time for this day?"))
-        if (monday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "tuesday":
-        tuesday = float(input("What is your total time for this day?"))
-        if (tuesday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "wednesday":
-        wednesday = float(input("What is your total time for this day?"))
-        if (wednesday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "thursday":
-        thursday = float(input("What is your total time for this day?"))
-        if (thursday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "friday":
-        friday = float(input("What is your total time for this day?"))
-        if (friday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "saturday":
-        saturday = float(input("What is your total time for this day?"))
-        if (saturday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
-    elif day == "sunday":
-        sunday = float(input("What is your total time for this day?"))
-        if (sunday > 1440):
-            print("This is not a valid time for this day")
-            valid = False
-            break
+print("What would you like to shop?\n")
 
-sumDay = int(monday) + int(tuesday) + int(wednesday) + int(thursday) + int(friday) + int(saturday) + int(sunday)
+while True:
+    itemSelected = str(input("Enter the item you wish to purchase, or type 'done' to exit (Beware of capital letters)\n"))
 
-if(valid == True):
-    totalSum = sumDay / 7
-    print("Your average for each day in minutes is: ",  totalSum)
-elif(valid == False):
-    print("Try using a valid time next")
-    
+    if itemSelected.lower() == "done":
+        break
+
+    if itemSelected in Items.__members__:
+        selectedItem = Items[itemSelected]
+        cart.append(selectedItem)
+        totalValue += selectedItem.value
+        print("Added ", selectedItem.name, ", total value right now is: ", totalValue)
+    else:
+        print("This item: ", itemSelected.upper(),  "doesn't exit, please select a valid item or write the item correctly")
+
+print("Checkout complete!")
+print("Items in cart:")
+for item in cart:
+    print(item.name , item.value)
+
+print("Your total comes out to: ", totalValue)
+if input("Pay? Yes/No\n").lower() == "yes":
+    print("Card declined. Please get out of my store")
+else:
+    print("I'm calling the cops")
