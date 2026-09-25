@@ -13,7 +13,7 @@ fearHeights = input("Do you have a fear of heights?: Yes / No\n")
 intercom = True
 
 
-#Rides
+#Rides 
 def extremeRollerCoaster(age, medicalProblems, pregnant):
     if age > 14 and medicalProblems.lower() == "no" and pregnant.lower() == "no":
         return print("\nYou can get on the extreme roller coaster")
@@ -38,3 +38,53 @@ def slingshotCoaster(intercom, medicalProblems, age):
 extremeRollerCoaster(age,medicalProblems,pregnant)
 waterSLide(height,fearHeights,swimsuit)
 slingshotCoaster(intercom,medicalProblems,age)
+
+
+#Variations of rules expressed in different ways
+
+#Extreme Roller Coaster variations
+def extremeRollerCoaster1(age, medicalProblems, pregnant):
+    isPregnant = False
+    if pregnant.lower() == "yes":
+        isPregnant = True
+
+    if age - 14 > 0 and medicalProblems.lower() == "no" and not isPregnant:
+        return print("\nYou can get on the extreme roller coaster")
+    else:
+        return print("\nNo, get out")
+    
+def extremeRollerCoaster2(age, medicalProblems, pregnant):
+    if age > 14 and medicalProblems.lower() == "no" or pregnant.lower() == "no":
+        return print("You can't get on until we confirm if you are pregnant or not")
+    else:
+        return print("You can't get on")
+
+
+#Water Slide variations
+def waterSlide1(height, fearHeights, swimsuit):
+    if height < 150 and fearHeights.lower() == "no" and swimsuit.lower() == "yes":
+        return print("You must be atleast this height to get on")
+
+def waterSlide2(height, fearHeights, swimsuit):
+    heights = False
+    if fearHeights == "yes":
+        heights = True
+
+    if height > 150 and not heights and swimsuit.lower() == "yes":
+        return print("Get on the water slide")
+    else:
+        return print("Don't even think about it")
+
+
+#Slinghshot coaster variations
+def slingshotCoaster1(intercom, medicalProblems, age):
+    if intercom == False and medicalProblems.lower() == "yes" and age > 16:
+        return print("Bruh the intercom again. But if you can hear me then you can't get on either way")
+    else:
+        return print("Wait just a sec")
+
+def slingshotCoaster2(intercom, medicalProblems, age):
+    if intercom == True and medicalProblems.lower() == "no" or age > 16:
+        return print("How old were you again?")
+    else:
+        return print("Nah bro you can't get on")
