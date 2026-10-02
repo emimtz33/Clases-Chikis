@@ -1,3 +1,6 @@
+import time
+import winsound
+
 # Dictionary for every letter 
 MORSE_LETTERS = { 'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.', 'G':'--.', 'H':'....',
                     'I':'..', 'J':'.---', 'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---', 'P':'.--.', 'Q':'--.-',
@@ -16,6 +19,20 @@ def encrypt(message):
 
     return morseCode
 
+def playSound (morseCode):
+    for symbol in morseCode:
+        if symbol == ".":
+            winsound.Beep(800,100) #Aproximate of frecuency and duration in ms
+            print("Dot")
+        elif symbol == "-":
+            winsound.Beep(800,350)
+            print("OverScore")
+        elif symbol == " ":
+            time.sleep(0.2) #Pausing after every letter
+            print("Space")
+        time.sleep(1) #We need to wait after every loop since python can't reproduce the sound quickly enough
+
 message = input("Enter the message\n")
 result = encrypt(message.upper())
 print (result)
+playSound(result)
