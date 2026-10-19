@@ -5,7 +5,7 @@ def assignValues ():
     return temperature, distance, time
 
 temperature, distance, time = assignValues()
-extend = True
+extend = True #Continue running the program
 
 while extend:
     if distance >= 5:
