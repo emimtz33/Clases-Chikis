@@ -41,7 +41,7 @@ for day in days:
     actDifficulty = float(input(f"What was the difficulty of your activity for: {day} "))
     timeWOBreak = float(input(f"How much did you spend working without a break for: {day} (INPUT IT IN MINUTES): "))
 
-    print(f"\nHere is some recommendations for this day!: {day}\n")
+    print(f"\nHere are some recommendations for this day!: {day}\n")
 
     vibeCheck(noiseLevel, studentEnergyLevel, actDifficulty, timeWOBreak)
 
